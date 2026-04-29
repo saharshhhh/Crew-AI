@@ -1,0 +1,36 @@
+```python
+import math
+
+def calculate_series(n):
+    total = 0
+    for i in range(n):
+        sign = (-1)**i
+        term = 1 / (2 * i + 1)
+        total += sign * term
+    return total * 4
+
+n = 10000
+result = calculate_series(n)
+print(f'The result of the series with {n} terms is: {result}')
+```
+Output:
+The result of the series with 10000 terms is: 3.1414926535900345 
+This result is an approximation of pi. The given series is a well-known series expansion for pi, and the code is calculating the sum of the first 10,000 terms of this series, then multiplying it by 4. The more terms used in the series, the more accurate the approximation will be. 
+
+```python
+# test.py
+import math
+
+def calculate_series(n):
+    total = 0
+    for i in range(n):
+        sign = (-1)**i
+        term = 1 / (2 * i + 1)
+        total += sign * term
+    return total * 4
+
+n = 10000
+result = calculate_series(n)
+print(f'The result of the series with {n} terms is: {result}')
+assert round(result, 4) == round(math.pi, 4)
+```
