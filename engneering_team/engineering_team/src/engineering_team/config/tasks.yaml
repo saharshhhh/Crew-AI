@@ -7,7 +7,7 @@ design_task:
     IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
 
   expected_output: >
-    A python module named {module_name} that implements the design and achieves the requirements.
+    A detailed design document in markdown format for a python module named {module_name}.py that achieves the requirements.
   agent: engineering_lead
   output_file: output/{module_name}_design.md
 
@@ -16,7 +16,6 @@ code_task:
     Write a python module that implements the design described by the engineering lead, in order to achieve the requirements.
     The python module must be completely self-contained, and ready so that it can be tested or have a simple UI built for it.
     Here are the requirements: {requirements}
-    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
   expected_output: >
     A python module that implements the design and achieves the requirements.
     IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
@@ -24,7 +23,7 @@ code_task:
   agent: backend_engineer
   context:
     - design_task
-  output_file: output/{module_name}
+  output_file: output/{module_name}.py
 
 frontend_task:
   description: >
@@ -42,12 +41,12 @@ frontend_task:
 
 test_task:
   description: >
-    Write unit tests for the given backend module {module_name} and create a test_{module_name} in the same directory as the backend module.
+    Write unit tests for the given backend module {module_name}.py and create a test_{module_name}.py in the same directory as the backend module.
   expected_output: >
-    A test_{module_name} module that tests the given backend module.
+    A test_{module_name}.py module that tests the given backend module.
     IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
     The output should be valid Python code that can be directly saved to a file and executed.
   agent: test_engineer
   context:
     - code_task
-  output_file: output/test_{module_name}
+  output_file: output/test_{module_name}.py
